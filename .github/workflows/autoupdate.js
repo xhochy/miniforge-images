@@ -5,9 +5,12 @@ module.exports = ({github, context}) => {
     owner: 'conda-forge',
     repo: 'miniforge',
   }).then((release) => {
+    console.log(release);
     const miniforge_version = release['data']['tag_name'];
+    console.log(miniforge_version);
 
     exec("sed -i -e 's/MINIFORGE_VERSION: \"[0-9.\\-]*\"/MINIFORGE_VERSION: \"" + miniforge_version + "\"/' azure-pipelines.yml", (error, stdout, stderr) => {
+      console.log("Sed passed");
       if (error) {
         console.log(`error: ${error.message}`);
         return;

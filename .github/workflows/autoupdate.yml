@@ -1,7 +1,5 @@
 name: Auto-update miniforge
-on:
-  schedule:
-   - cron: "0 */6 * * *"
+on: [push]
 jobs:
   createPullRequest:
     runs-on: ubuntu-latest
